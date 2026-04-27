@@ -6,34 +6,23 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
+<header>
+  <ul class="topnav">
+    <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="#">Services</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
+  </ul>
+</header>
 <body>
   <div>
-    <nav class="navbar">
-      <!-- Hidden checkbox to track state -->
-      <input type="checkbox" id="menu-toggle">
-
-      <!-- The Hamburger Icon -->
-      <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-      <!-- The Navigation Links -->
-      <ul class="menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
+    <h1>Contact</h1>
+    <p>Shane Soderstrom</p>
+    <p>soderstromshane@gmail.com</p>
+    <p>801-857-4399</p>
+    <p>Eagle Mountain, Utah</p>
+    <a href="https://www.linkedin.com/in/shane-soderstrom/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Mordon327" target="_blank">Github Profile</a>
   </div>
-  <h1>Contact</h1>
-  <p>Shane Soderstrom</p>
-  <p>soderstromshane@gmail.com</p>
-  <p>801-857-4399</p>
-  <p>Eagle Mountain, Utah</p>
-  <a href="https://www.linkedin.com/in/shane-soderstrom/" target="_blank">LinkedIn</a>
-  <a href="https://github.com/Mordon327" target="_blank">Github Profile</a>
 </body>
 </html>
