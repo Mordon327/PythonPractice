@@ -2,49 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-  </style>
+  <title>About</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
+<header>
+  <ul class="topnav">
+        <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
+      </ul>
+</header>
 <body>
-  <h1>Welcome</h1>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing 
-    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  <div>
+    <h1>About</h1>
+      <p>
+    {{results[0][0]}}
   </p>
-  <a href="/hello">Click me</a>
-  <nav>
-  <!-- Hidden checkbox to track state -->
-  <input type="checkbox" id="menu-toggle" hidden>
-  
-  <!-- The hamburger icon -->
-  <label for="menu-toggle" class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </label>
-
-  <!-- The actual menu links -->
-  <ul class="menu">
-    <li><a href="">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>
+    <a href="/hello">Click me</a>
+  </div>
 </body>
 </html>
