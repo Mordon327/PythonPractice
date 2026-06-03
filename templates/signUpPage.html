@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <script>
+  // The function that runs on click
+  function showMessage() {
+    alert("Button was clicked using the onclick attribute!");
+  }
+  function createUser() {
+
+  }
+    document.getElementById('runBtn').addEventListener('click', () => {
+      fetch('/run-script', { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('output').innerText = data.message;
+          })
+          .catch(error => console.error('Error:', error));
+  });
+</script>
+</head>
+<header>
+  <ul class="topnav">
+        <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
+        <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
+      </ul>
+</header>
+<body>
+  <span>
+    <div>First Name: 
+    <input type="text" id="firstname"></input>
+    Last Name: 
+    <input type="text" id="lastname"></input>
+    Email Address: 
+    <input type="text" id="emailaddress"></input>
+    Password: 
+    <input type="text" id="password"></input>
+    </div>
+  </span>
+  <button onclick="showMessage()">SUBMIT</button>
+  <button onclick="runBtn()">SUBMIT 2</button>
+</body>
+</html>

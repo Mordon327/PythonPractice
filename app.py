@@ -42,6 +42,10 @@ def contact():
 def about_page():
 	return render_template('aboutPage.html')
 
+@app.route("/test")
+def test_page():
+	return render_template('child.html')
+
 @app.route("/signin")
 def viewusers():
 	db = get_db()
@@ -49,6 +53,11 @@ def viewusers():
 	results = cursor.fetchall()
 	#return render_template('signInPage.html')
 	return render_template('signInPage.html', results = results)
+
+@app.route("/signup")
+def signup():
+	#return render_template('signUpPage.html')
+	return render_template('signUpPage.html')
 
 #Simple API call
 @app.route('/users', methods=['POST'])
