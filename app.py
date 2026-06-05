@@ -63,12 +63,11 @@ def signup():
 @app.route('/users', methods=['POST'])
 def create_user():
 	db = get_db()
-	FIRST_NAME = request.json['FIRST_NAME']
-	LAST_NAME = request.json['LAST_NAME']
-	CREATE_DATE = datetime.now()
-	EMAIL_ADDRESS = request.json['EMAIL_ADDRESS']
+	FIRST_NAME = request.form['FIRST_NAME']
+	LAST_NAME = request.form['LAST_NAME']
+	EMAIL_ADDRESS = request.form['EMAIL_ADDRESS']
 	#Execute sql on the db connection. Format Insert Into table (columns), Values (question marks used as placeholders), [replacement values for question marks]
-	db.execute('INSERT INTO Users (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, CREATE_DATE, IS_ADMIN) VALUES (?, ?, ?, ?, ?)', [FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, CREATE_DATE, False])
+	db.execute('INSERT INTO Users (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, CREATE_DATE, IS_ADMIN) VALUES (?, ?, ?, ?, ?)', [FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, datetime.now(), False])
 	db.commit()
 	return jsonify({'message': 'User created successfully!'})
 

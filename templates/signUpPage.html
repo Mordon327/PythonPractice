@@ -10,17 +10,8 @@
   function showMessage() {
     alert("Button was clicked using the onclick attribute!");
   }
-  function createUser() {
+      
 
-  }
-    document.getElementById('runBtn').addEventListener('click', () => {
-      fetch('/run-script', { method: 'POST' })
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById('output').innerText = data.message;
-          })
-          .catch(error => console.error('Error:', error));
-  });
 </script>
 </head>
 <header>
@@ -43,7 +34,32 @@
     <input type="text" id="password"></input>
     </div>
   </span>
+
+
+      <h2>Send Parameters to Python Script</h2>
+    
+    <!-- Form sends data via POST to the /run-script route -->
+    <form action="/users" method="POST">
+        <label>First Name:</label>
+        <input type="text" name="FIRST_NAME" required>
+        <br><br>
+        
+        <label>Last Name:</label>
+        <input type="text" name="LAST_NAME" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="text" name="EMAIL_ADDRESS" required>
+        <br><br>
+        
+        <button type="submit">Execute Python Script</button>
+    </form>
+
+    <!-- Displays the result if it exists -->
+    <!-- {% if result %}
+        <h3>Output from Python:</h3>
+        <p>{{ result }}</p>
+    {% endif %} -->
   <button onclick="showMessage()">SUBMIT</button>
-  <button onclick="runBtn()">SUBMIT 2</button>
 </body>
 </html>
