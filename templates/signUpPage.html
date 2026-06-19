@@ -6,60 +6,54 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
   <script>
-  // The function that runs on click
-  function showMessage() {
-    alert("Button was clicked using the onclick attribute!");
-  }
-      
 
-</script>
+  // The function that runs on click
+    function showMessage() {
+      alert("Button was clicked using the onclick attribute!");
+    }
+    function comparePassword() {
+  if (document.getElementById('field1').value !== document.getElementById('field2').value) {
+    event.preventDefault();
+    alert("Passwords must match");
+  }
+}
+  </script>
+  <style>
+    .password-container { position: relative; width: 300px; }
+    .password-container input { width: 100%; padding: 10px; padding-right: 40px; box-sizing: border-box; }
+    .password-container i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; }
+  </style>
 </head>
 <header>
   <ul class="topnav">
-        <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
-      </ul>
+    <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
+    <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
+  </ul>
 </header>
 <body>
-  <span>
-    <div>First Name: 
-    <input type="text" id="firstname"></input>
-    Last Name: 
-    <input type="text" id="lastname"></input>
-    Email Address: 
-    <input type="text" id="emailaddress"></input>
-    Password: 
-    <input type="text" id="password"></input>
-    </div>
-  </span>
+  <!-- Form sends data via POST to the /run-script route -->
+  <span><form action="/users" method="POST">
+    <div><label>First Name:</label>
+      <input type="text" name="FIRST_NAME" required>
 
+      <label>Last Name:</label>
+      <input type="text" name="LAST_NAME" required>
 
-      <h2>Send Parameters to Python Script</h2>
-    
-    <!-- Form sends data via POST to the /run-script route -->
-    <form action="/users" method="POST">
-        <label>First Name:</label>
-        <input type="text" name="FIRST_NAME" required>
-        <br><br>
-        
-        <label>Last Name:</label>
-        <input type="text" name="LAST_NAME" required>
-        <br><br>
+      <label>Email:</label>
+      <input type="text" name="EMAIL_ADDRESS" required>
 
-        <label>Email:</label>
-        <input type="text" name="EMAIL_ADDRESS" required>
-        <br><br>
-        
-        <button type="submit">Execute Python Script</button>
-    </form>
+      <label>Password:</label>
+      <input type="text" name="PASSWORD" required id="field1">
 
-    <!-- Displays the result if it exists -->
-    <!-- {% if result %}
-        <h3>Output from Python:</h3>
-        <p>{{ result }}</p>
-    {% endif %} -->
-  <button onclick="showMessage()">SUBMIT</button>
-</body>
-</html>
+      <label>Confirm Password:</label>
+      <input type="text" name="confirmPassword" required id="field2">
+
+      <button type="submit" onclick="validateAndSubmit()">CREATE ACCOUNT</button>
+    </form><div></span>
+      <button onclick="comparePassword()">Validate ACCOUNT</button>
+
+      <button onclick="event.preventDefault(); comparePassword()">SUBMIT</button>
+    </body>
+    </html>

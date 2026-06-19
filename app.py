@@ -46,17 +46,19 @@ def about_page():
 def test_page():
 	return render_template('child.html')
 
+@app.route("/redirect")
+def redirect_to_signin():
+	return render_template('signInPage.html')
+
 @app.route("/signin")
 def viewusers():
 	db = get_db()
 	cursor = db.execute('SELECT * FROM Users')
 	results = cursor.fetchall()
-	#return render_template('signInPage.html')
 	return render_template('signInPage.html', results = results)
 
 @app.route("/signup")
 def signup():
-	#return render_template('signUpPage.html')
 	return render_template('signUpPage.html')
 
 #Simple API call
@@ -66,10 +68,11 @@ def create_user():
 	FIRST_NAME = request.form['FIRST_NAME']
 	LAST_NAME = request.form['LAST_NAME']
 	EMAIL_ADDRESS = request.form['EMAIL_ADDRESS']
+	PASSWORD = request.form['PASSWORD']
 	#Execute sql on the db connection. Format Insert Into table (columns), Values (question marks used as placeholders), [replacement values for question marks]
-	db.execute('INSERT INTO Users (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, CREATE_DATE, IS_ADMIN) VALUES (?, ?, ?, ?, ?)', [FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, datetime.now(), False])
+	db.execute('INSERT INTO Users (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, CREATE_DATE, IS_ADMIN, PASSWORD) VALUES (?, ?, ?, ?, ?, ?)', [FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, datetime.now(), False, PASSWORD])
 	db.commit()
-	return jsonify({'message': 'User created successfully!'})
+	return redirect(url_for('redirect_to_signin'))
 
 #Read
 @app.route('/users/<int:user_id>', methods=['GET'])
@@ -97,3 +100,10 @@ def delete_user(user_id):
 	db.execute('DELETE FROM Users WHERE ID = ?', [user_id])
 	db.commit()
 	return jsonify({'message': 'User was deleted successfully!'})
+
+@app.route('/allusers', methods=['GET'])
+def allusers():
+	db = get_db()
+	db.execute('SELECT * FROM Users WHERE 1')
+	#change
+	return redirect(url_for('redirect_to_signin'))
