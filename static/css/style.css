@@ -150,33 +150,36 @@ header {
   align-items: center; /* center vertically */
 }
 
-/* Style the topnav */
-ul.topnav {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  padding: .5%;
-  margin: .5%;
+/* style.css */
+.navbar {
+    display: flex;
+    background-color: #333;
+    padding: 15px;
+    opacity: 70%;
 }
 
-/* Style links in topnav */
-ul.topnav li a {
-  display: block;
-  color: black;
-  padding: 14px 16px;
-  text-decoration: none;
-  background-color: whitesmoke;
-  border: 4px solid silver;
-  opacity: 80%;
-  margin-right: 20px;
-  margin-left: 20px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
 }
 
-/* Change color on hover */
-ul.topnav li a:hover {
-  background-color: #dddddd;
-  color: black;
-  font-weight: bold;
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 16px;
 }
 
+/* Highlighted state */
+.nav-links a.active {
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px solid #3498db; /* Adds an underline highlight */
+}
+
+/* Highlighted state */
+.nav-links a:hover {
+    color: #fff;
+    border-bottom: 2px solid #fff; /* Adds an underline highlight */
+}
 ```

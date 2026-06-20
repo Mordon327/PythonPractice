@@ -7,12 +7,7 @@
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
 <header>
-  <ul class="topnav">
-        <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
-      </ul>
+  {% include "/_navigationPage.html" %}
 </header>
 <body>
   <div>

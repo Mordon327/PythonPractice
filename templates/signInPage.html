@@ -7,20 +7,39 @@
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 </head>
 <header>
-  <ul class="topnav">
-        <li><div class="headerstyle flex-container"><a href="/">Home</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/about">About</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/signin">Sign In</a></div></li>
-        <li><div class="headerstyle flex-container"><a href="/contact">Contact</a></div></li>
-      </ul>
+  {% include "/_navigationPage.html" %}
 </header>
 <body>
   <div>
-    <h1>About</h1>
+    <h1>Sign In</h1>
       <p>
     {{results[0][0]}}
   </p>
-    <a href="/hello">Click me</a>
+
+
+
+  <span>
+    <form action="/users" method="POST">
+      <div>
+          <label>First Name:</label>
+          <input type="text" name="FIRST_NAME" required>
+
+          <label>Last Name:</label>
+          <input type="text" name="LAST_NAME" required>
+
+          <label>Email:</label>
+          <input type="text" name="EMAIL_ADDRESS" required>
+
+          <label>Password:</label>
+          <input type="text" name="PASSWORD" required id="field1">
+          
+          <button type="submit">LOG IN</button>
+        <div>
+      </form>
+    </span>
+
+
+  <a href="/signup">Create An Account</a>
   </div>
       <table border="1">
         <thead>

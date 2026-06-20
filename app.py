@@ -51,7 +51,7 @@ def redirect_to_signin():
 	return render_template('signInPage.html')
 
 @app.route("/signin")
-def viewusers():
+def signin():
 	db = get_db()
 	cursor = db.execute('SELECT * FROM Users')
 	results = cursor.fetchall()
@@ -107,3 +107,7 @@ def allusers():
 	db.execute('SELECT * FROM Users WHERE 1')
 	#change
 	return redirect(url_for('redirect_to_signin'))
+
+@app.route('/layout', methods=['GET'])
+def layout():
+	return render_template('navigationPage.html')
