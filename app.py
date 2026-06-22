@@ -1,7 +1,11 @@
 import os
 from flask import Flask, render_template, redirect, url_for, send_from_directory, g, jsonify, request
 from datetime import datetime
+#Manual form of using SQLite3
 import sqlite3
+#Simplified tool to use SQLite3
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
 #When naming this file to app or wsgi, the command to run will be: flask run
 #Otherwise it will be flask --app filename run
 
@@ -9,16 +13,25 @@ import sqlite3
 
 app = Flask(__name__)
 
+#New Simplified WIP
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.path.join(app.root_path, 'databases/pythonPracticeDB.db')
+#db = SQLAlchemy(app)
 
+#Manual
 def connect_db():
 	sql = sqlite3.connect(os.path.join(app.root_path, 'databases/pythonPracticeDB'))
 	sql.row_factory = sqlite3.Row
 	return sql
-
+#Manual
 def get_db():
 	if not hasattr(g, 'sqlite3'):
 		g.sqlite_db = connect_db()
 	return g.sqlite_db
+
+#New Simplified
+#class Companies():
+#	id = db.Column(db.Integer, primary_key=True)
+#	name = db.Column(db.String(100))
 
 #Prevent memory leak by closing the connection
 @app.teardown_appcontext
@@ -40,7 +53,10 @@ def contact():
 
 @app.route("/about")
 def about_page():
-	return render_template('aboutPage.html')
+	db = get_db()
+	companies = db.execute('SELECT c.COMPANY_NAME, c.DESCRIPTION, c.START_DATE , c.END_DATE , p.PROJECT_NAME , ps.SKILL_NAME FROM Companies AS c LEFT JOIN Projects p ON c.COMPANY_ID = p.COMPANY_ID LEFT JOIN ProjectSkills ps ON p.PROJECT_ID = ps.PROJECT_ID GROUP BY c.COMPANY_ID').fetchall()
+	db.close()
+	return render_template('aboutPage.html', companies=companies)
 
 @app.route("/test")
 def test_page():

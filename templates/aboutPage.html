@@ -10,12 +10,54 @@
   {% include "/_navigationPage.html" %}
 </header>
 <body>
+  {% for item in companies %}
+  <div>
+    {{ item["COMPANY_NAME"] }}
+    {% for projects in item["PROJECT_ID"] %}
+    {{ item["PROJECT_NAME"] }}
+    {% endfor %}
+  </div>
+  {% endfor %}
   <div>
     <h1>About</h1>
+    <h2>Portfolio</h2>
       <p>
     This custom project is to demonstrate my abilities to learn and impliment programming principles. This project was started on April 4th of 2026. The tools used are as follows:
-  </p>
-    <a href="/hello">Click me</a>
+      </p>
+      <ul>
+        <li>Flask</li>
+        <li>Python</li>
+        <li>Jinga</li>
+        <li>SQLite3</li>
+        <li>AWS EC2</li>
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+      </div>
+      <div>
+      <h2>DMBA Projects</h2>
+      <p>The following projects were built using the following tools:</p>
+      <ul>
+          <p>Software built to track providers who submit authorixations to DMBA</p>
+          <li>Appian</li>
+          <li>MySQL</li>
+          <li>Microsoft SQL Server</li>
+      </ul>
+      <ul>
+        <li>Provider Group Management</li>
+        <li>Provider Portal</li>
+        <li>Investments</li>
+        <li>Appeals</li>
+        <li>Transaction Workflow Systems</li>
+        <li>Missionary Medical App</li>
+        <li>Claims Processing App</li>
+      </ul>
+  </div>
+  <div>
+    <h2>CR England</h2>
+    <ul>
+      <li></li>
+    </ul>
   </div>
 </body>
 </html>
